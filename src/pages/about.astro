@@ -1,23 +1,33 @@
 ---
+const pageTitle = "About Me";
 
+const identity = {
+  name: "Elchin Huseynli",
+  country: "Czech Republic",
+  city: "Karlovy Vary",
+  age: 39,
+  occupation: "Software Engineer",
+};
+
+const hobbies = ["Coding", "Reading", "Traveling", "Gaming"];
+const skills = ["HTML", "CSS", "JavaScript", "React", "Node.js", "MongoDB"];
+
+const happy = true;
+const finished = false;
+const goal = 3;
 ---
 
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
-    <title>Astro About page</title>
+    <title>{pageTitle}</title>
   </head>
-
   <body>
     <a href="/">Home</a>
     <a href="/about/">About</a>
     <a href="/blog/">Blog</a>
-
-    <h1>My Astro Site</h1>
-    <h1>About Me</h1>
+    <h1>{pageTitle}</h1>
     <h2>... and my new Astro site!</h2>
 
     <p>
@@ -29,5 +39,24 @@
       This site will update as I complete more of the tutorial, so keep checking
       back and see how my journey is going!
     </p>
+    <p>Here are a few facts about me:</p>
+    <ul>
+      <li>My Name is {identity.name}</li>
+      <li>I am from {identity.country}</li>
+      <li>I am {identity.age} years old</li>
+      <li>I am a {identity.occupation}</li>
+      <li>My hobbies are {hobbies.join(", ")}</li>
+      <li>My skills are {skills.join(", ")}</li>
+    </ul>
+
+    {happy && <p> I a happy to be learning Astro </p>}
+    {finished && <p> I finished this tutorial</p>}
+    {
+      goal === 3 ? (
+        <p> My goals is to finish in 3 days.</p>
+      ) : (
+        <p> My goals is not to finish in 3 days</p>
+      )
+    }
   </body>
 </html>
