@@ -1,0 +1,16 @@
+---
+import "../components/footer.css";
+const year = new Date().getFullYear();
+import Social from "./Social.astro"
+---
+<footer>
+    <div>© {year} Elchin Huseynli</div>
+
+        <div class="social-links">
+            <Social platform="twitter" username="ElchinHuseynli" />
+            <Social platform="github" username="ElchinHuseynli" />
+            <Social platform="linkedin" username="elchinhuseynli" />
+        </div>
+
+       
+</footer>

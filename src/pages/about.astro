@@ -1,5 +1,6 @@
 ---
-const pageTitle = "About Me";
+
+import BaseLayout from '../layouts/BaseLayout.astro';
 
 const identity = {
   name: "Elchin Huseynli",
@@ -8,6 +9,7 @@ const identity = {
   age: 39,
   occupation: "Software Engineer",
 };
+const pageTitle = "About Me";
 
 const hobbies = ["Coding", "Reading", "Traveling", "Gaming"];
 const skills = ["HTML", "CSS", "JavaScript", "React", "Node.js", "MongoDB"];
@@ -15,48 +17,29 @@ const skills = ["HTML", "CSS", "JavaScript", "React", "Node.js", "MongoDB"];
 const happy = true;
 const finished = false;
 const goal = 3;
+const skillColor = "crimson";
+const fontSize = "24px";
+const textCase = "uppercase";
 ---
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-    <title>{pageTitle}</title>
-  </head>
-  <body>
-    <a href="/">Home</a>
-    <a href="/about/">About</a>
-    <a href="/blog/">Blog</a>
-    <h1>{pageTitle}</h1>
-    <h2>... and my new Astro site!</h2>
+<BaseLayout
+  pageTitle={pageTitle}
+  pageDescription={"Learn more about me"}>
+  <p>Hello! My name is {identity.name}, and I am a {identity.age}-year-old software engineer based in {identity.city}, {identity.country}.</p>
 
-    <p>
-      I am working through Astro's introductory tutorial. This is the second
-      page on my website, and it's the first one I built myself!
-    </p>
+  <h3>Hobbies</h3>
+  <ul>
+    {hobbies.map((hobby) => (
+      <li>{hobby}</li>
+    ))}
+  </ul>
 
-    <p>
-      This site will update as I complete more of the tutorial, so keep checking
-      back and see how my journey is going!
-    </p>
-    <p>Here are a few facts about me:</p>
-    <ul>
-      <li>My Name is {identity.name}</li>
-      <li>I am from {identity.country}</li>
-      <li>I am {identity.age} years old</li>
-      <li>I am a {identity.occupation}</li>
-      <li>My hobbies are {hobbies.join(", ")}</li>
-      <li>My skills are {skills.join(", ")}</li>
-    </ul>
+  <h3>Skills</h3>
+  <ul>
+    {skills.map((skill) => (
+      <li style={`color: ${skillColor}; font-size: ${fontSize}; text-transform: ${textCase};`}>{skill}</li>
+    ))}
+  </ul>
 
-    {happy && <p> I a happy to be learning Astro </p>}
-    {finished && <p> I finished this tutorial</p>}
-    {
-      goal === 3 ? (
-        <p> My goals is to finish in 3 days.</p>
-      ) : (
-        <p> My goals is not to finish in 3 days</p>
-      )
-    }
-  </body>
-</html>
+  <h3>Current Status</h3>
+  <p>I am currently {happy ? "happy" : "not happy"} with my career and {finished ? "have" : "have not"} achieved my goal of learning {goal} new programming languages this year.</p>
